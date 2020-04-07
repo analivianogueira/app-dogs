@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-home',
@@ -6,13 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
-  dogs: string[] = ['Aurora', 'Kiara', 'Valdir o Cachorro'];
-  isOwner: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  
 
 }
