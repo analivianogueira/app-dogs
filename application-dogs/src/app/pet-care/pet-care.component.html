@@ -1,0 +1,8 @@
+<div class="container" style="width: 80%; height: 60%; margin: 30px; background-color: lightgray;">  
+    <div class="row">
+        <div *ngFor="let care of cares" class="col-sm-6 col-xs-12" style="margin-top: 10px; margin-bottom: 20px;">
+            <app-care-services [careService]="care"></app-care-services>
+        </div>
+    </div>
+    
+</div>

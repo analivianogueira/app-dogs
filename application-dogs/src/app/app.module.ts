@@ -8,13 +8,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
+import { PetCareComponent } from './pet-care/pet-care.component';
+import { PetHotelComponent } from './pet-hotel/pet-hotel.component';
+import { CareServicesComponent } from './pet-care/care-services/care-services.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    AboutComponent
+    AboutComponent,
+    PetCareComponent,
+    PetHotelComponent,
+    CareServicesComponent
   ],
   imports: [
     BrowserModule,
