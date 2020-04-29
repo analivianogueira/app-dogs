@@ -9,7 +9,6 @@ export class HeaderComponent implements OnInit {
 
   
   @Input('proprietaria') isOwner: boolean;
-  menus: string[] = ['Sobre', 'Dormitório', 'Banho e Tosa'];
 
   constructor() { }
 

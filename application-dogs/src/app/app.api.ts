@@ -1,0 +1,1 @@
+export const DOG_API = 'http://localhost:3000'

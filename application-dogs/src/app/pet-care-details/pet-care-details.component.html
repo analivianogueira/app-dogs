@@ -1,0 +1,26 @@
+
+<div class="card" style="width: 50%; float: center; margin: 40px;">
+    <img src={{care?.imagePath}} class="card-img-top" alt="...">
+    <div class="card-body">
+        <h4>{{care?.nameService}}</h4>
+      <p class="card-text">{{care?.description}}</p>
+    </div>
+  </div>
+
+  <div style="width: 50%; float: center; margin: 40px;">
+    <button type="button" class="btn btn-primary btn-lg" style="width: 300px; background-color: lightsteelblue !important; border: none; margin: 5px;">
+      <a routerLinkActive="detail-active" [routerLink]="['menu']">Menu</a>
+    </button>
+    <button type="button" class="btn btn-secondary btn-lg" style="width: 300px; background-color: lightsteelblue !important; border: none; margin: 5px;">
+      <a routerLinkActive="detail-active" [routerLink]="['carrinho']">Carrinho de Compras</a>
+    </button>
+  </div>
+  
+<div class="row" style="width: 100%; margin: 60px;">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+
+
