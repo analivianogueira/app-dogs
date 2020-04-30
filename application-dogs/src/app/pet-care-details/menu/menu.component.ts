@@ -1,4 +1,7 @@
+import { MenuItem } from './../menu-item/menu-item.model';
+import { PetCareService } from './../../pet-care/pet-care.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  menu: MenuItem[];
+
+  constructor(private petCareService: PetCareService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.menu = this.petCareService.getMenuById(this.route.parent.snapshot.params['id']);
+
   }
 
 }

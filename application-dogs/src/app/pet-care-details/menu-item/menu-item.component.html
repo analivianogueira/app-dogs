@@ -1,4 +1,8 @@
-<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example container"  style="width: 400px;">
-    <h4 id="list-item-1">Item 1</h4>
-    <h4 id="list-item-2">Item 2</h4>
-</div>
+<ul class="list-group" style="width: 400px;">
+    <li class="list-group-item">
+    <h4>{{menuItem.nameItem}}</h4>
+    <p>{{menuItem.price | currency: 'BRL': true}}</p>
+    <p>{{menuItem.description}}</p>
+    <button type="button" class="btn btn-primary" (click)="emitAddEvent">Adicionar</button>
+    </li>
+</ul>
