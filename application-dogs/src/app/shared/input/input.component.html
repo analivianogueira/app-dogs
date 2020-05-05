@@ -1,0 +1,8 @@
+<div class="form-group" [class.is-valid]="input.valid && (input.dirty || input.touched)"
+                        [class.is-invalid]="!input.valid && (input.dirty || input.touched)">
+    <label>{{label}}</label>
+    <ng-content></ng-content>
+    <div *ngIf="!input.valid && (input.dirty || input.touched)" class="invalid-feedback">
+       {{errorMessage}}
+    </div>
+</div>
