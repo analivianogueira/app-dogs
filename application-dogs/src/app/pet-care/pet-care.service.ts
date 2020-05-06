@@ -40,8 +40,7 @@ export class PetCareService{
     getMenuById(id: string): MenuItem[]{
         this.menuResponse = [];
         for (var item  of this.listOfMenuItens) {
-            console.log(item);
-            if (item.id == id){
+            if (item.idParent == id){
                 this.menuResponse.push(item);
             }
         } 
@@ -83,54 +82,63 @@ export class PetCareService{
     listOfMenuItens: MenuItem[] = [
         {
             id: '1',
+            idParent: '1',
             nameItem: 'Banho',
             description: 'Banho para o seu cãozinho',
             price: 40.00
         },
         {
-            id: '1',
+            id: '2',
+            idParent: '1',
             nameItem: 'Tosa',
             description: 'Tosa para o seu cãozinho',
             price: 60.00
         },
         {
-            id: '1',
+            id: '3',
+            idParent: '1',
             nameItem: 'Tosa Higienica',
             description: 'Tosa Higienica para o seu cãozinho',
             price: 30.00
         },
         {
-            id: '2',
+            id: '4',
+            idParent: '2',
             nameItem: 'Passeio horário comercial',
             description: 'Passeio para o seu cão no período de 1 hora.',
             price: 20.00
         },
         {
-            id: '2',
+            id: '5',
+            idParent: '2',
             nameItem: 'Passeio horário extra',
             description: 'Passeio para o seu cão no período de 1 hora.',
             price: 35.00
         },
         {
-            id: '3',
+            id: '6',
+            idParent: '3',
             nameItem: 'Consulta médica  horário comercial',
             description: 'Consulta para o seu cão em horário comercial.',
             price: 90.00
         },
         {
-            id: '3',
+            id: '7',
+            idParent: '3',
             nameItem: 'Consulta médica  após as 20h00.',
             description: 'Consulta para o seu cão após as 20h00',
             price: 120.00
         },
         {
-            id: '4',
+            id: '8',
+            idParent: '4',
             nameItem: 'Adestramento comandos básicos.',
             description: 'Valor referente a hora aula.',
             price: 40.00
         },
         {
-            id: '4',
+            id: '9',
+            idParent: '4',
             nameItem: 'Adestramento competições.',
             description: 'Para essa especialidade deve ser fechado um pacote de 5 aulas.',
             price: 400.00

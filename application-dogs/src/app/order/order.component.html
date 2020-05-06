@@ -1,0 +1,45 @@
+{{form.value | json}}
+<form #form= "ngForm" novalidate>
+    <h4>Finalize seu pedido.</h4>
+    <div class="row" style="margin: 20px;">
+        <div class="form-group" style="margin: 10px;">
+            <label for="addressId">Endereço</label>
+            <input type="address" class="form-control" id="addressId" name="address" minlength="5" placeholder="Endereço" #iptAddress="ngModel"ngModel required
+            [class.is-valid]="iptAddress.valid && (iptAddress.dirty || iptAddress.touched)"
+            [class.is-invalid]="!iptAddress.valid && (iptAddress.dirty || iptAddress.touched)">
+             
+        </div>
+        <div class="form-group" style="margin: 10px;">
+            <label for="neighborhoodId">Bairro</label>
+            <input type="text" class="form-control" id="neighborhoodId" name="neighborhoodAdress" minlength="3" placeholder="Bairro" #iptNeighborhood="ngModel" ngModel required
+            [class.is-valid]="iptNeighborhood.valid && (iptNeighborhood.dirty || iptNeighborhood.touched)"
+            [class.is-invalid]="!iptNeighborhood.valid && (iptNeighborhood.dirty || iptNeighborhood.touched)">
+        </div>
+        <div class="form-group" style="margin: 10px;">
+            <label for="numberId">Número</label>
+            <input type="text" class="form-control" pattern="^[0-9]*$" id="numberId" name="numberAddress" minlength="1" placeholder="Número" #iptNumber="ngModel" ngModel required
+            [class.is-valid]="iptNumber.valid && (iptNumber.dirty || iptNumber.touched)"
+            [class.is-invalid]="!iptNumber.valid && (iptNumber.dirty || iptNumber.touched)">
+        </div>
+        <div class="form-group" style="margin: 10px;">
+        <label for="optionalId">Complemento</label>
+        <input type="address" class="form-control" id="optionalId" name="optionalAddress" placeholder="Complemento" ngModel>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid" style="margin-top: 50px !important; width: 150px; height: 30px;">Concluir pedido</button>
+    </div>
+    <div class="col-xs-12">
+        <div *ngIf="!items">
+            <p>
+                Não há itens no seu carrinho. Que tal começar por <a [routerLink]="['/petcare']">aqui</a>?
+            </p>
+        </div>
+        <div class="form-group" *ngIf="items">
+            <h5>Items</h5>
+            <app-order-items></app-order-items>
+        </div>
+    </div>
+    <div class="form-group">
+        <h5>Formas de Pagamento</h5>
+        <app-radio [options]="paymentOptions" name="paymentOption" ngModel></app-radio>
+    </div>
+  </form>

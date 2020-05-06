@@ -3,6 +3,8 @@
     <h4>{{menuItem.nameItem}}</h4>
     <p>{{menuItem.price | currency: 'BRL': true}}</p>
     <p>{{menuItem.description}}</p>
-    <button type="button" class="btn btn-primary" (click)="emitAddEvent">Adicionar</button>
+    <button type="button" class="btn btn-primary" (click)="emitAddEvent()">
+        Adicionar
+    </button>
     </li>
 </ul>

@@ -1,9 +1,10 @@
+import { ShoppingCartService } from './pet-care-details/shopping-cart/shopping-cart.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router'
 import {ROUTES} from './app.router'
 import { HttpModule } from '@angular/http';
-import { ShoppingCartComponent } from './pet-care-details/shopping-cart/shopping-cart.component';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -13,6 +14,10 @@ import { PetCareComponent } from './pet-care/pet-care.component';
 import { CareServicesComponent } from './pet-care/care-services/care-services.component';
 import { PetCareService } from './pet-care/pet-care.service';
 import { PetCareDetailsModule } from './pet-care-details/pet-care-details.module';
+import { OrderComponent } from './order/order.component';
+import { InputComponent } from './shared/input/input.component';
+import { RadioComponent } from './shared/radio/radio.component';
+import { OrderItemsComponent } from './order/order-items/order-items.component';
 
 @NgModule({
   declarations: [
@@ -22,15 +27,20 @@ import { PetCareDetailsModule } from './pet-care-details/pet-care-details.module
     AboutComponent,
     PetCareComponent,
     CareServicesComponent,
-    ShoppingCartComponent
+    OrderComponent,
+    InputComponent,
+    RadioComponent,
+    OrderItemsComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES),
     PetCareDetailsModule
   ],
   providers: [ PetCareService,
+    ShoppingCartService
    ],
   bootstrap: [AppComponent]
 })

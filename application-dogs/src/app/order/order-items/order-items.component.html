@@ -1,0 +1,7 @@
+<ul class="list-group" *ngFor="let item of items">
+    <li class="list-group-item">
+        {{item.quantity}} 
+        {{item.menuItem.name}} 
+        {{item.menuItem.description}}
+        {{item.value() | currency: 'BRL': true}}</li>
+  </ul>

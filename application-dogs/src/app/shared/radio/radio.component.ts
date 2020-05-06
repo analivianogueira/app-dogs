@@ -1,16 +1,25 @@
 import { RadioOption } from './radio-option.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-radio',
   templateUrl: './radio.component.html',
+  providers:[
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => RadioComponent),
+      multi: true
+    }
+  ],
   styleUrls: ['./radio.component.css']
 })
-export class RadioComponent implements OnInit {
+export class RadioComponent implements OnInit, ControlValueAccessor {
 
   @Input() options: RadioOption[];
 
   value: any;
+  onChange: any;
 
   constructor() { }
 
@@ -19,6 +28,21 @@ export class RadioComponent implements OnInit {
 
   setValue(value: any){
     this.value = value;
+    this.onChange(this.value);
   }
+
+  //metodo é utilizado pelas diretivas quando elas querem passar um valor
+  writeValue(obj: any): void{
+    this.value = obj;
+  }
+
+  //função chamada sempre que o valor interno do componente mudar
+  registerOnChange(fn: any): void{
+     this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void{}
+
+  setDisabledState(isDisabled: boolean): void{}
 
 }
