@@ -1,10 +1,10 @@
-<div *ngIf="!items">
+<div style="padding-left: 20px;"*ngIf="items.length === 0">
     <p>
         Não há itens no seu carrinho. Que tal começar por <a [routerLink]="['/petcare']">aqui</a>?
     </p>
 </div>
 
-<div *ngIf="items">
+<div *ngIf="items.length > 0">
     <ul class="list-group" *ngFor="let item of items">
         <li class="list-group-item">
             <button (click)="emitDecreaseQty(item)" class="btn btn-sm" style="color: blue;">-</button>
