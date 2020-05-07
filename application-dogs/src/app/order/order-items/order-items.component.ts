@@ -27,7 +27,7 @@ export class OrderItemsComponent implements OnInit {
   }
 
   emitRemove(item: CarItem){
-    this.emitRemove(item);
+    this.remove.emit(item);
   }
 
 }

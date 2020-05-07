@@ -1,3 +1,4 @@
+import { OrderService } from './order/order.service';
 import { ShoppingCartService } from './pet-care-details/shopping-cart/shopping-cart.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -40,7 +41,8 @@ import { OrderItemsComponent } from './order/order-items/order-items.component';
     PetCareDetailsModule
   ],
   providers: [ PetCareService,
-    ShoppingCartService
+    ShoppingCartService,
+    OrderService
    ],
   bootstrap: [AppComponent]
 })

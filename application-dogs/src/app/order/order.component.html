@@ -28,14 +28,12 @@
         <button type="submit" class="btn btn-primary" [disabled]="!form.valid" style="margin-top: 50px !important; width: 150px; height: 30px;">Concluir pedido</button>
     </div>
     <div class="col-xs-12">
-        <div *ngIf="!items">
-            <p>
-                Não há itens no seu carrinho. Que tal começar por <a [routerLink]="['/petcare']">aqui</a>?
-            </p>
-        </div>
-        <div class="form-group" *ngIf="items">
+        <div class="form-group">
             <h5>Items</h5>
-            <app-order-items></app-order-items>
+            <app-order-items [items]="cartItems()"
+                             (increaseQty)="increaseQty($event)"
+                             (decreaseQty)="decreaseQty($event)"
+                             (remove)="removeItem($event)"></app-order-items>
         </div>
     </div>
     <div class="form-group">

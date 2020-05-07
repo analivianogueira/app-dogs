@@ -1,3 +1,5 @@
+import { CarItem } from './../pet-care-details/shopping-cart/car-item.model';
+import { OrderService } from './order.service';
 import { RadioOption } from './../shared/radio/radio-option.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -14,9 +16,24 @@ export class OrderComponent implements OnInit {
     {label: 'Cartão de Crédito', value: 'CRED'}
   ];
 
-  constructor() { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
   }
 
+  cartItems(): CarItem[]{
+    return this.orderService.cartItems();
+  }
+
+  increaseQty(item: CarItem){
+    this.orderService.increasyQty(item);
+  }
+
+  removeItem(item: CarItem){
+    this.orderService.removeItem(item);
+  }
+  
+  decreaseQty(item: CarItem){
+    this.orderService.decreaseQty(item);
+  }
 }

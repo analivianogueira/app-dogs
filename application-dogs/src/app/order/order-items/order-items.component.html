@@ -1,7 +1,20 @@
-<ul class="list-group" *ngFor="let item of items">
-    <li class="list-group-item">
-        {{item.quantity}} 
-        {{item.menuItem.name}} 
-        {{item.menuItem.description}}
-        {{item.value() | currency: 'BRL': true}}</li>
-  </ul>
+<div *ngIf="!items">
+    <p>
+        Não há itens no seu carrinho. Que tal começar por <a [routerLink]="['/petcare']">aqui</a>?
+    </p>
+</div>
+
+<div *ngIf="items">
+    <ul class="list-group" *ngFor="let item of items">
+        <li class="list-group-item">
+            <button (click)="emitDecreaseQty(item)" class="btn btn-sm" style="color: blue;">-</button>
+            {{item.quantity}}
+            <button (click)="emitIncreaseQty(item)" class="btn btn-sm" style="color: blue;">+</button>
+            {{item.menuItem.name}} 
+            {{item.menuItem.description}}
+            {{item.value() | currency: 'BRL': true}}
+            <button (click)="emitRemove(item)" class="btn btn-sm" style="color: blue;">X</button>
+        </li>
+    </ul>
+</div>
+
