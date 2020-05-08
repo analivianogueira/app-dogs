@@ -36,8 +36,15 @@
                              (remove)="removeItem($event)"></app-order-items>
         </div>
     </div>
-    <div class="form-group">
-        <h5>Formas de Pagamento</h5>
-        <app-radio [options]="paymentOptions" name="paymentOption" ngModel></app-radio>
+    <div class="col-xs-12">
+        <div class="form-group">
+            <h5>Formas de Pagamento</h5>
+            <app-radio [options]="paymentOptions" name="paymentOption" ngModel required></app-radio>
+        </div>
+    
+        <div class="form-group" style="width: 70%;">
+            <h5>Frete e total</h5>
+            <app-delivery-costs [delivery]="delivery" [itemsValue]="itemsValue()"></app-delivery-costs>
+        </div>
     </div>
   </form>
