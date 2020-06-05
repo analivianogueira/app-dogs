@@ -16,7 +16,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
   ],
   imports: [
     CommonModule,
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES)
   ]
 })
 export class PetCareDetailsModule { }

@@ -1,31 +1,57 @@
-{{form.value | json}}
-<form #form= "ngForm" novalidate>
+<form [formGroup]="orderForm">
     <h4>Finalize seu pedido.</h4>
+    <div class="row" *ngIf="orderForm.hasError('emailsNotMatch')">
+        <span style="color: red;">X Os e-mails não conferem.</span>
+    </div>
+    <h3>Seus dados</h3>
     <div class="row" style="margin: 20px;">
-        <div class="form-group" style="margin: 10px;">
-            <label for="addressId">Endereço</label>
-            <input type="address" class="form-control" id="addressId" name="address" minlength="5" placeholder="Endereço" #iptAddress="ngModel"ngModel required
-            [class.is-valid]="iptAddress.valid && (iptAddress.dirty || iptAddress.touched)"
-            [class.is-invalid]="!iptAddress.valid && (iptAddress.dirty || iptAddress.touched)">
+        <div class="form-group" style="margin: 10px;" >
+            <label>Nome</label>
+            <input type="text" class="form-control" formControlName="name" placeholder="Nome"
+            [class.is-valid]="verifyInputValid('name')"
+            [class.is-invalid]="verifyInputInvalid('name')">
              
         </div>
         <div class="form-group" style="margin: 10px;">
-            <label for="neighborhoodId">Bairro</label>
-            <input type="text" class="form-control" id="neighborhoodId" name="neighborhoodAdress" minlength="3" placeholder="Bairro" #iptNeighborhood="ngModel" ngModel required
-            [class.is-valid]="iptNeighborhood.valid && (iptNeighborhood.dirty || iptNeighborhood.touched)"
-            [class.is-invalid]="!iptNeighborhood.valid && (iptNeighborhood.dirty || iptNeighborhood.touched)">
+            <label for="emailId">E-mail</label>
+            <input type="text" class="form-control" id="emailId" formControlName="email"  placeholder="E-mail" #iptEmail
+            [class.is-valid]="verifyInputValid('email')"
+            [class.is-invalid]="verifyInputInvalid('email')">
+             
         </div>
         <div class="form-group" style="margin: 10px;">
-            <label for="numberId">Número</label>
-            <input type="text" class="form-control" pattern="^[0-9]*$" id="numberId" name="numberAddress" minlength="1" placeholder="Número" #iptNumber="ngModel" ngModel required
-            [class.is-valid]="iptNumber.valid && (iptNumber.dirty || iptNumber.touched)"
-            [class.is-invalid]="!iptNumber.valid && (iptNumber.dirty || iptNumber.touched)">
+            <label>Confirmação e-mail</label>
+            <input type="text" class="form-control" formControlName="emailConfirmation"  placeholder="E-mail confirmação"
+            [class.is-valid]="verifyInputValid('emailConfirmation')"
+            [class.is-invalid]="verifyInputInvalid('emailConfirmation')">
+             
+        </div>
+    </div>
+    <h3>Endereço de entrega</h3>
+    <div class="row" style="margin: 20px;">
+        <div class="form-group" style="margin: 10px;">
+            <label>Endereço</label>
+            <input type="address" class="form-control" formControlName="address" placeholder="Endereço"
+            [class.is-valid]="verifyInputValid('address')"
+            [class.is-invalid]="verifyInputInvalid('address')">
+             
+        </div>
+        <div class="form-group" style="margin: 10px;">
+            <label>Bairro</label>
+            <input type="text" class="form-control" formControlName="neighborhoodAdress" placeholder="Bairro"
+            [class.is-valid]="verifyInputValid('neighborhoodAdress')"
+            [class.is-invalid]="verifyInputInvalid('neighborhoodAdress')">
+        </div>
+        <div class="form-group" style="margin: 10px;">
+            <label>Número</label>
+            <input type="text" class="form-control" formControlName="numberAddress"  placeholder="Número"
+            [class.is-valid]="verifyInputValid('numberAddress')"
+            [class.is-invalid]="verifyInputInvalid('numberAddress')">
         </div>
         <div class="form-group" style="margin: 10px;">
         <label for="optionalId">Complemento</label>
-        <input type="address" class="form-control" id="optionalId" name="optionalAddress" placeholder="Complemento" ngModel>
+        <input type="address" class="form-control" id="optionalId" formControlName="optionalAddress" placeholder="Complemento">
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!form.valid" style="margin-top: 50px !important; width: 150px; height: 30px;">Concluir pedido</button>
     </div>
     <div class="col-xs-12">
         <div class="form-group">
@@ -39,7 +65,7 @@
     <div class="col-xs-12">
         <div class="form-group">
             <h5>Formas de Pagamento</h5>
-            <app-radio [options]="paymentOptions" name="paymentOption" ngModel required></app-radio>
+            <app-radio [options]="paymentOptions" formControlName="paymentOption"></app-radio>
         </div>
     
         <div class="form-group" style="width: 70%;">
@@ -47,4 +73,5 @@
             <app-delivery-costs [delivery]="delivery" [itemsValue]="itemsValue()"></app-delivery-costs>
         </div>
     </div>
+    <button type="submit" class="btn btn-primary" (click)="checkoutOrder(orderForm.value)" style="margin: 20px !important; width: 150px; height: 30px;">Concluir pedido</button>
   </form>

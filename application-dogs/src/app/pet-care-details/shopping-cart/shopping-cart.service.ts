@@ -1,6 +1,15 @@
+import { NotificationService } from './../../shared/messages/snackbar/notification.service';
+import { Injectable } from '@angular/core';
+
 import { MenuItem } from './../menu-item/menu-item.model';
 import { CarItem } from './car-item.model';
+
+
+//Todo serviço que vai receber algo deve ser marcado com @Injectable
+@Injectable()
 export class ShoppingCartService {
+
+    constructor(private notificationService: NotificationService){}
     
     items:CarItem[] = [];
 
@@ -15,10 +24,12 @@ export class ShoppingCartService {
         }else{
             this.items.push(new CarItem(menuItem));
         }
+        this.notificationService.notify(`Você adicionu o item ${menuItem.nameItem} no carrinho.`);
     }
 
     removeItem(item: CarItem){
         this.items.splice(this.items.indexOf(item), 1);
+        this.notificationService.notify(`Você removeu o item ${item.menuItem.nameItem} do carrinho.`);
     }
 
     total():number{
