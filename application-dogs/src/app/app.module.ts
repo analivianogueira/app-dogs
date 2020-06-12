@@ -1,3 +1,4 @@
+import { OrderModule } from './order/order.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +15,8 @@ import { PetCareComponent } from './pet-care/pet-care.component';
 import { CareServicesComponent } from './pet-care/care-services/care-services.component';
 import { PetCareDetailsModule } from './pet-care-details/pet-care-details.module';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     HeaderComponent,
     PetCareComponent,
     CareServicesComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -32,12 +36,13 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     CoreModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules}),
-    PetCareDetailsModule
+    PetCareDetailsModule,
+    OrderModule
   ],
   exports: [
     PetCareDetailsModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

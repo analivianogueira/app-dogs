@@ -1,3 +1,6 @@
+import { OrderComponent } from './order/order.component';
+import { AboutComponent } from './about/about.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import {Routes} from '@angular/router';
 
@@ -16,8 +19,10 @@ export const ROUTES: Routes = [
         ]
     },
     {path: 'order-summary', component: OrderSummaryComponent},
-    //Carregamento usando lazy loading (carregamento preguiçoso)
-    {path: 'about', loadChildren: './about/about.module.ts#AboutModule'},
-    {path: 'order', loadChildren: './order/order.module#OrderModule'}
+    {path: 'about', component: AboutComponent},
+    {path: 'order', component: OrderComponent},
+    //{path: 'about', loadChildren: '.about.module#AboutModule'},
+    //{path: 'order', loadChildren: './order/order.module#OrderModule'},
+    {path: '**', component: NotFoundComponent}
 
 ]

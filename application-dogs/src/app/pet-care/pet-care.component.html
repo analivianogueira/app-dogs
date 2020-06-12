@@ -1,3 +1,18 @@
+<div class="content-header">
+<div class="row" style="margin: 20px;">
+    <h3>Serviços Disponíveis</h3>
+    <button class="search-link" (click)="toggleSearch()">Buscar serviços</button>
+</div>
+<div class="row"> 
+    <div class="col-xs-12 init-search-bar" [@toggleSearch]="searchBarState">
+        <form>
+            <div class="form-group search-bar">
+                <input type="text" class="form-control" placeholder="O que você está procurando?">
+            </div>
+        </form>
+    </div>
+</div>
+</div>
 <div class="container" style="width: 80%; height: 60%; margin: 30px; background-color: lightgray;">  
     <div class="row">
         <div *ngFor="let care of cares" class="col-sm-6 col-xs-12" style="margin-top: 10px; margin-bottom: 20px;">

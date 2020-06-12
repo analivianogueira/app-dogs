@@ -1,0 +1,22 @@
+.search-link {
+    cursor: pointer;
+    color: #555;
+    float: right;
+    border: none;
+    height: 35px;
+    margin-left: 60px;
+}
+
+.search-link:hover{
+    color: #dd4b39;
+}
+
+.search-bar{
+    width: 600px;
+    margin: 20px;
+}
+
+.init-search-bar{
+    opacity: 0;
+    max-height: 0px;
+}

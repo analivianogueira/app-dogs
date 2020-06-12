@@ -1,5 +1,5 @@
 <a [routerLink]="['/petcare', careService.id]"> 
-  <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 18rem;" [@petCareAppeared]="petCareState">
     <img [src]="careService.imagePath" class="card-img-top">
     <div class="card-body">
       <h3>{{careService.nameService}}</h3>

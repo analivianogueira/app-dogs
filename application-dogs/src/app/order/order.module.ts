@@ -3,12 +3,10 @@ import { DeliveryCostsComponent } from './delivery-costs/delivery-costs.componen
 import { OrderItemsComponent } from './order-items/order-items.component';
 import { OrderComponent } from './order.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import {ROUTES} from '../app.router';
 
 
-const ROUTES: Routes =[
-    {path:'', component: OrderComponent}
-]
 @NgModule({
     declarations: [
         OrderComponent,
