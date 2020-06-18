@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 import { Component, OnInit } from '@angular/core';
@@ -29,13 +30,21 @@ export class PetCareComponent implements OnInit {
 
   cares: Care[] = [];
 
-  constructor(private petCareService: PetCareService) { }
+  searchForm: FormGroup;
+  searchControl: FormControl;
+
+  constructor(private petCareService: PetCareService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.cares = this.petCareService.caresList();
 
    /** this.petCareService.careServices()
       .subscribe(care => this.cares = care);*/
+
+    this.searchControl = this.formBuilder.control('');
+    this.searchForm = this.formBuilder.group({
+      searchControl: this.searchControl
+    })
   }
 
   toggleSearch(){
